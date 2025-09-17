@@ -5,9 +5,9 @@
   body {
     margin: 0;
     padding: 0;
-    font-family: 'Share Tech Mono', monospace;
+    font-family: 'Archivo';
     background: #000;
-    color: #00ff99;
+    color: #fff;
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -23,8 +23,7 @@
     font-weight: 400;
     font-size: clamp(2.5rem, 10vw, 8rem);
     position: relative;
-    color: #00ff99;
-    text-shadow: 0 0 5px #00ff99, 0 0 15px #00ff99, 0 0 30px #00ff99;
+    color: #fff;
     cursor: default;
     text-transform: uppercase;
     white-space: nowrap;
@@ -51,7 +50,7 @@
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const textElement = document.getElementById('randomText');
-    const originalText = "Built to iterate";
+    const originalText = "Built to Iterate";
 
     // const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()_-+=[]{}|;:,.<>?';
     const chars = 'Stglislasnrilv'
@@ -69,7 +68,7 @@
       
       const tl = gsap.timeline({
         onComplete: () => {
-          gsap.delayedCall(1, () => tl.restart());
+            // gsap.delayedCall(1, () => tl.restart());
         }
       });
 
@@ -92,15 +91,16 @@
             if (i == letters.length - 1){
               console.log('we don reset it')
               const elements = document.querySelectorAll('span');
-              elements.forEach(element => {
-                gsap.timeline().to(element, { opacity: 0, duration:0.5, delay: 2 })
-              });
+              gsap.killTweensOf(elements)
+              // elements.forEach(element => {
+                
+              // });
             }
           }
         }, i * 0.1);
       });
 
-      tl.to({}, { duration: 2 });
+      // tl.to({}, { duration: 2 });
     }
 
     createDecoderAnimation();
